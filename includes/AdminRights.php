@@ -3,7 +3,7 @@
 // namespace SpellingDictionary;
 
 class AdminRights {
-	public function displayAllWords() {
+	public static function displayAllWords() {
 		global $wgSpellingDictionaryDatabase;
 		$dbr = wfGetDB( DB_SLAVE, array(), $wgSpellingDictionaryDatabase );
 		$rows = $dbr->select(
@@ -22,7 +22,7 @@ class AdminRights {
 		return $words;
 	}
 
-	public function displayByLanguage( $language ) {
+	public static function displayByLanguage( $language ) {
 		global $wgSpellingDictionaryDatabase;
 		$dbr = wfGetDB( DB_SLAVE, array(), $wgSpellingDictionaryDatabase );
 		$rows = $dbr->select(
@@ -33,7 +33,6 @@ class AdminRights {
 			),
 			__METHOD__
 		);
-		$result = array();
 		$words = "";
 		foreach ( $rows as $row ) {
 			$words .= $row->sd_word . " of language " . $row->sd_language;
@@ -42,7 +41,7 @@ class AdminRights {
 		return $words;
 	}
 
-	public function deleteSpelling( $spelling ) {
+	public static function deleteSpelling( $spelling ) {
 		global $wgSpellingDictionaryDatabase;
 		$dbr = wfGetDB( DB_SLAVE, array(), $wgSpellingDictionaryDatabase );
 		$rows = $dbr->delete(
