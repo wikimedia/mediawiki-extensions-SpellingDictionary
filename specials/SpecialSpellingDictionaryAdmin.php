@@ -15,6 +15,10 @@ class SpecialSpellingDictionaryAdmin extends SpecialPage {
 		parent::__construct( 'SpellingDictionaryAdmin', 'spelladmin' );
 	}
 
+	public function doesWrites() {
+		return true;
+	}
+
 	public function initializeTree() {
 		$tree = new SDTree();
 

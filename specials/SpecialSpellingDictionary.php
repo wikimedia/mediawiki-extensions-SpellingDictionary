@@ -18,6 +18,10 @@ class SpecialSpellingDictionary extends SpecialPage {
 		parent::__construct( 'SpellingDictionary' );
 	}
 
+	public function doesWrites() {
+		return true;
+	}
+
 	/**
 	 * Shows the page to the user.
 	 * @param string $sub: The subpage string argument (if any).
