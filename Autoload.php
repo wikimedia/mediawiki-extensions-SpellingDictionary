@@ -18,7 +18,6 @@ $wgAutoloadClasses += array(
 	'SpecialSpellingDictionaryAdmin' => "$dir/specials/SpecialSpellingDictionaryAdmin.php",
 	'SpecialViewAll' => "$dir/specials/SpecialViewAll.php",
 	'SpecialViewByLanguage' => "$dir/specials/SpecialViewByLanguage.php",
-	'ApiQuerySpellingDictionary' => "$dir/api/ApiQuerySpellingDictionary.php",
 	'SDTree' => "$dir/includes/AdminRights.php",
 	'SDSection' => "$dir/includes/AdminRights.php",
 	'SDItem' => "$dir/includes/AdminRights.php",

@@ -58,8 +58,6 @@ $GLOBALS['wgExtensionMessagesFiles']['SpellingDictionaryAlias'] =
 $GLOBALS['wgExtensionMessagesFiles']['SpellingDictionaryMagic'] =
 	$dir . '/SpellingDictionary.i18n.magic.php';
 
-$GLOBALS['wgAPIListModules']['example'] = 'ApiQuerySpellingDictionary';
-
 // Register hooks
 // See also http://www.mediawiki.org/wiki/Manual:Hooks
 $GLOBALS['wgHooks']['BeforePageDisplay'][] = 'SpellingDictionaryHooks::onBeforePageDisplay';
