@@ -70,4 +70,7 @@ class SpecialSpellingDictionaryAdmin extends SpecialPage {
 		$out->addHTML( $admin_tree->toString() );
 	}
 
+	protected function getGroupName() {
+		return 'other';
+	}
 }

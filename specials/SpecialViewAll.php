@@ -16,4 +16,8 @@ class SpecialViewAll extends SpecialPage {
 		$out->addWikiMsg( 'view-all-intro' );
 		$out->addHTML ( AdminRights::displayAllWords() );
 	}
+
+	protected function getGroupName() {
+		return 'other';
+	}
 }

@@ -48,4 +48,8 @@ class SpecialViewByLanguage extends SpecialPage {
 		$out = $this->getOutput();
 		$out->addHTML( AdminRights::displayByLanguage( $language ) );
 	}
+
+	protected function getGroupName() {
+		return 'other';
+	}
 }

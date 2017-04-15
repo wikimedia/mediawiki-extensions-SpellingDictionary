@@ -74,11 +74,7 @@ $GLOBALS['wgHooks']['LoadExtensionSchemaUpdates'][] =
 // Register special pages
 // See also http://www.mediawiki.org/wiki/Manual:Special_pages
 $GLOBALS['wgSpecialPages']['SpellingDictionary'] = 'SpecialSpellingDictionary';
-$GLOBALS['wgSpecialPageGroups']['SpellingDictionary'] = 'other';
 $GLOBALS['wgSpecialPages']['SpellingDictionaryAdmin'] = 'SpecialSpellingDictionaryAdmin';
-$GLOBALS['wgSpecialPageGroups']['SpellingDictionaryAdmin'] = 'other';
 $GLOBALS['wgSpecialPages']['ViewAll'] = 'SpecialViewAll';
-$GLOBALS['wgSpecialPageGroups']['ViewAll'] = 'other';
 $GLOBALS['wgSpecialPages']['ViewByLanguage'] = 'SpecialViewByLanguage';
-$GLOBALS['wgSpecialPageGroups']['ViewByLanguage'] = 'other';
 

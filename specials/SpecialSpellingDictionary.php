@@ -73,4 +73,7 @@ class SpecialSpellingDictionary extends SpecialPage {
 		Words::addWord( $formData );
 	}
 
+	protected function getGroupName() {
+		return 'other';
+	}
 }
