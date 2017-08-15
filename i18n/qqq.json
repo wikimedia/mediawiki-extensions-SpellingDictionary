@@ -2,14 +2,29 @@
 	"@metadata": {
 		"authors": ["Ankita Shukla"]
 	},
-	"desc": "{{desc}}",
+	"spellingdictionary": "Used as name for special page",
+	"spellingdictionaryadmin": "Used as name for special page",
+	"viewall": "Used as name for special page",
+	"viewbylanguage": "Used as name for special page",
+	"desc": "{{desc|name=SpellingDictionary|url=https://www.mediawiki.org/wiki/Extension:SpellingDictionary}}",
 	"title-special": "Title of Special:SpellingDictionary.",
 	"title-special-admin": "Title of Special:SpellingDictionaryAdmin.",
+	"title-view-all": "Used as page title for Special:ViewAll",
+	"title-view-by-language": "Used as page title for Special:ViewByLanguage",
 	"intro-paragraph": "Intro paragraph shown on Special:SpellingDictionary.",
 	"intro-paragraph-admin": "Intro paragraph shown on Special:SpellingDictionaryAdmin.",
 	"spell-dict-word": "Form label for word field to add word",
-	"spell-dict-lang": "Form label for language field to add word",
+	"spell-dict-language": "Form label for language field to add word",
 	"add-word-form-submit": "Submit button of form",
-	"-section-chooselanguage": "Title for the section for choosing the language",
-	"-section-addword": "Title for the section for adding a new word"
+	"sd-admin-browse-edit": "Used as section name on Special:SpellingDictionaryAdmin",
+	"sd-admin-add-more-spellings": "Used as section name on Special:SpellingDictionaryAdmin",
+	"sd-admin-viewall": "Used as section name on Special:SpellingDictionaryAdmin",
+	"view-all-intro": "Used as intro text on Special:ViewAll",
+	"sd-admin-view-by-lang": "Used as section name on Special:SpellingDictionaryAdmin",
+	"view-by-lang-intro": "Used as intro text on Special:ViewByLanguage",
+	"sd-admin-importexport": "Used as section name on Special:SpellingDictionaryAdmin",
+	"sd-admin-select-language": "Used as label on Special:ViewByLanguage\nUsed with javascript",
+	"sd-admin-view-selected-language": "Used as submit text on Special:ViewByLanguage\nUsed with javascript",
+	"view-by-lang-section-chooselanguage": "Title for the section for choosing the language\nUsed with javascript",
+	"add-word-section-addword": "Title for the section for adding a new word"
 }
