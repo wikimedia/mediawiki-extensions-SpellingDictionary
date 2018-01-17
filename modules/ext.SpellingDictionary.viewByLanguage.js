@@ -14,7 +14,7 @@
 	} );
 	var submitButton = new OO.ui.ButtonInputWidget( {
 		label: mw.message( 'sd-admin-view-selected-language' ).text(),
-		flags: [ 'constructive', 'primary' ],
+		flags: [ 'progressive', 'primary' ],
 		indicator: 'next',
 		type: 'submit'
 	} );

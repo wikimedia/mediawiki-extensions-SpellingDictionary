@@ -16,7 +16,7 @@
 		} );
 		var submitButton = new OO.ui.ButtonInputWidget( {
 			label: mw.message( 'add-word-form-submit' ).text(),
-			flags: [ 'constructive', 'primary'],
+			flags: [ 'progressive', 'primary'],
 			indicator: 'next',
 			type: 'submit'
 		} );
