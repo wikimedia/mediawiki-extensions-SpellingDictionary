@@ -3,7 +3,7 @@
  * Resource loader module definitions.
  *
  * @file
- * @license GPL-2.0+
+ * @license GPL-2.0-or-later
  */
 
 $resourcePaths = array(
