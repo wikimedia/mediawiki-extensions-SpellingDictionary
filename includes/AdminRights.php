@@ -121,13 +121,13 @@ class SDSection {
 class SDItem {
 	public $link;
 
-	function showPage( $page_title, $desc = null, $query = array() ) {
+	static function showPage( $page_title, $desc = null, $query = array() ) {
 		$item = new SDItem();
 		$item->link = Linker::link( $page_title, $desc );
 		return $item;
 	}
 
-	function customSpecialPage( $page_title ) {
+	static function customSpecialPage( $page_title ) {
 		$item = new SDItem();
 		$page = SpecialPageFactory::getPage( $page_title );
 		$item->link = Linker::link( $page->getTitle(), $page->getDescription() );
