@@ -41,7 +41,6 @@ $wgResourceModules['ext.SpellingDictionary.viewByLanguage'] = array(
 		'sd-admin-select-language',
 		'view-by-lang-section-chooselanguage',
 		'sd-admin-view-selected-language',
-		'uls-select-language',
 	),
 	'dependencies' => array(
 		'jquery.uls',
