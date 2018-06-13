@@ -9,7 +9,7 @@
  * @version 0.1.0
  *
  * The license governing the extension code:
- * @license GNU General Public Licence 2.0 or later
+ * @license GPL-2.0-or-later
  */
 
 /**
@@ -18,30 +18,28 @@
  * expose to MediaWiki metadata about your extension. For additional
  * documentation, see its documentation block in includes/DefaultSettings.php
  */
-$wgExtensionCredits['other'][] = array(
+$wgExtensionCredits['other'][] = [
 	'path' => __FILE__,
 	'name' => 'SpellingDictionary',
-	'author' => array(
+	'author' => [
 		'Ankita Shukla'
-	),
+	],
 	'version'  => '0.1.0',
-	//Delete this url and uncomment the next one when the extension goes live on the core page.
+	// Delete this url and uncomment the next one when the extension goes live on the core page.
 	'url' => 'https://www.mediawiki.org/wiki/User:Ankitashukla/Extension:SpellingDictionary',
-	//'url' => 'https://www.mediawiki.org/wiki/Extension:SpellingDictionary',
+	// 'url' => 'https://www.mediawiki.org/wiki/Extension:SpellingDictionary',
 	'descriptionmsg' => 'desc',
-);
+];
 
 // Setup
 
 $GLOBALS['wgGroupPermissions']['sysop']['spelladmin'] = true;
 $GLOBALS['wgAvailableRights'][] = 'spelladmin';
 
-
 $dir = __DIR__;
 
 require_once "$dir/Resources.php";
 require_once "$dir/Autoload.php";
-
 
 // Globals for this extension
 $GLOBALS['wgSpellingDictionaryDatabase'] = false;
@@ -77,4 +75,3 @@ $GLOBALS['wgSpecialPages']['SpellingDictionary'] = 'SpecialSpellingDictionary';
 $GLOBALS['wgSpecialPages']['SpellingDictionaryAdmin'] = 'SpecialSpellingDictionaryAdmin';
 $GLOBALS['wgSpecialPages']['ViewAll'] = 'SpecialViewAll';
 $GLOBALS['wgSpecialPages']['ViewByLanguage'] = 'SpecialViewByLanguage';
-

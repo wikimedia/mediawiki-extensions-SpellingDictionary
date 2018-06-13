@@ -10,7 +10,7 @@
 global $wgAutoloadClasses;
 $dir = __DIR__;
 
-$wgAutoloadClasses += array(
+$wgAutoloadClasses += [
 	'Words' => "$dir/includes/Words.php",
 	'AdminRights' => "$dir/includes/AdminRights.php",
 	'SpellingDictionaryHooks' => "$dir/SpellingDictionary.hooks.php",
@@ -21,4 +21,4 @@ $wgAutoloadClasses += array(
 	'SDTree' => "$dir/includes/AdminRights.php",
 	'SDSection' => "$dir/includes/AdminRights.php",
 	'SDItem' => "$dir/includes/AdminRights.php",
-);
+];

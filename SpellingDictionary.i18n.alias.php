@@ -6,12 +6,12 @@
  * @ingroup Extensions
  */
 
-$specialPageAliases = array();
+$specialPageAliases = [];
 
 /** English (English) */
-$specialPageAliases['en'] = array(
-	'SpellingDictionary' => array( 'SpellingDictionary' ),
-	'SpellingDictionaryAdmin' => array( 'SpellingDictionaryAdmin' ),
-	'ViewAll' => array( 'ViewAll' ),
-	'ViewByLanguage' => array( 'ViewByLanguage' )
-);
+$specialPageAliases['en'] = [
+	'SpellingDictionary' => [ 'SpellingDictionary' ],
+	'SpellingDictionaryAdmin' => [ 'SpellingDictionaryAdmin' ],
+	'ViewAll' => [ 'ViewAll' ],
+	'ViewByLanguage' => [ 'ViewByLanguage' ]
+];

@@ -25,20 +25,20 @@ class SpecialSpellingDictionaryAdmin extends SpecialPage {
 		// SECTION: browse spellings
 		$browse_edit = new SDSection( $this->msg( 'sd-admin-browse-edit' )->text() );
 
-		//Item: Add new spellings -> redirect to SpecialDictionary
+		// Item: Add new spellings -> redirect to SpecialDictionary
 		$add_new = SpecialPage::getTitleFor( 'SpellingDictionary' );
-		$browse_edit->addItem( SDItem::showPage( $add_new ,
-								$this->msg( 'sd-admin-add-more-spellings' )->text() ));
+		$browse_edit->addItem( SDItem::showPage( $add_new,
+								$this->msg( 'sd-admin-add-more-spellings' )->text() ) );
 
 		// Item: View All
 		$viewall = SpecialPage::getTitleFor( 'ViewAll' );
-		$browse_edit->addItem( SDItem::showPage( $viewall , 
-								$this->msg( 'sd-admin-viewall' )->text() ));
+		$browse_edit->addItem( SDItem::showPage( $viewall,
+								$this->msg( 'sd-admin-viewall' )->text() ) );
 
 		// Item: View By Language
 		$viewByLang = SpecialPage::getTitleFor( 'ViewByLanguage' );
 		$browse_edit->addItem( SDItem::showPage( $viewByLang,
-								$this->msg( 'sd-admin-view-by-lang' )->text() ));
+								$this->msg( 'sd-admin-view-by-lang' )->text() ) );
 
 		$tree->addSection( $browse_edit );
 
@@ -53,7 +53,7 @@ class SpecialSpellingDictionaryAdmin extends SpecialPage {
 
 	/**
 	 * Shows the page to the user.
-	 * @param string $sub: The subpage string argument (if any).
+	 * @param string $sub The subpage string argument (if any).
 	 *  [[Special:SpellingDictionaryAdmin/subpage]].
 	 */
 	public function execute( $sub ) {

@@ -24,7 +24,7 @@ class SpecialSpellingDictionary extends SpecialPage {
 
 	/**
 	 * Shows the page to the user.
-	 * @param string $sub: The subpage string argument (if any).
+	 * @param string $sub The subpage string argument (if any).
 	 *  [[Special:SpellingDictionary/subpage]].
 	 */
 	public function execute( $sub ) {
@@ -37,36 +37,35 @@ class SpecialSpellingDictionary extends SpecialPage {
 		// Display languages in their native name
 		$languages = Language::fetchLanguageNames( null, 'mwfile' );
 		ksort( $languages );
-		$options = array();
+		$options = [];
 		foreach ( $languages as $code => $name ) {
 			$options["$code - $name"] = $code;
 		}
 
-		$formDescriptor = array(
-			'word' => array(
+		$formDescriptor = [
+			'word' => [
 				'type' => 'text',
 				'label-message' => 'spell-dict-word',
 				'required' => true,
 				'section' => 'section-addword',
-			),
-			'language' => array(
+			],
+			'language' => [
 				'type' => 'select',
 				'label-message' => 'spell-dict-language',
 				'required' => true,
 				'options' => $options,
 				'section' => 'section-addword'
-			),
-		);
+			],
+		];
 
 		$form = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
 		$form->setId( 'addWordForm' );
 		$form->setMessagePrefix( 'add-word-form' );
 		$form->setSubmitText( wfMessage( 'add-word-form-submit' )->text() );
 		// Callback function
-		$form->setSubmitCallback( array( 'SpecialSpellingDictionary', 'store' ) );
+		$form->setSubmitCallback( [ 'SpecialSpellingDictionary', 'store' ] );
 
 		$form->show();
-
 	}
 
 	static function store( $formData ) {

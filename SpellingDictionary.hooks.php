@@ -44,16 +44,16 @@ class SpellingDictionaryHooks {
 	 */
 	public static function onParserFirstCallInit( &$parser ) {
 		// Add the following to a wiki page to see how it works:
-		//  <dump>test</dump>
-		//  <dump foo="bar" baz="quux">test content</dump>
+		// <dump>test</dump>
+		// <dump foo="bar" baz="quux">test content</dump>
 		$parser->setHook( 'dump', 'SpellingDictionaryHooks::parserTagDump' );
 
 		// Add the following to a wiki page to see how it works:
-		//  {{#echo: hello }}
+		// {{#echo: hello }}
 		$parser->setFunctionHook( 'echo', 'SpellingDictionaryHooks::parserFunctionEcho' );
 
 		// Add the following to a wiki page to see how it works:
-		//  {{#showme: hello | hi | there }}
+		// {{#showme: hello | hi | there }}
 		$parser->setFunctionHook( 'showme', 'SpellingDictionaryHooks::parserFunctionShowme' );
 
 		return true;
@@ -61,7 +61,7 @@ class SpellingDictionaryHooks {
 
 	public static function onRegisterMagicWords( &$magicWordsIds ) {
 		// Add the following to a wiki page to see how it works:
-		//  {{MYWORD}}
+		// {{MYWORD}}
 		$magicWordsIds[] = 'myword';
 
 		return true;
@@ -82,14 +82,14 @@ class SpellingDictionaryHooks {
 	 */
 	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
 		$updater->addExtensionTable( 'spell_dict_word_list',
-		dirname( __FILE__ ) . '/sql/spelling_dictionary.sql', true );
+		__DIR__ . '/sql/spelling_dictionary.sql', true );
 		return true;
 	}
 
 	/**
 	 * Parser magic word handler for {{MYWORD}}
 	 *
-	 * @return string: Wikitext to be rendered in the page.
+	 * @return string Wikitext to be rendered in the page.
 	 */
 	public static function parserGetWordMyword() {
 		global $wgSpellingDictionaryMyWord;
@@ -100,20 +100,20 @@ class SpellingDictionaryHooks {
 	/**
 	 * Parser hook handler for <dump>
 	 *
-	 * @param string $data: The content of the tag.
-	 * @param array $params: The attributes of the tag.
-	 * @param Parser $parser: Parser instance available to render
+	 * @param string $data The content of the tag.
+	 * @param array $params The attributes of the tag.
+	 * @param Parser $parser Parser instance available to render
 	 *  wikitext into html, or parser methods.
-	 * @param PPFrame $frame: Can be used to see what template
+	 * @param PPFrame $frame Can be used to see what template
 	 *  arguments ({{{1}}}) this hook was used with.
 	 *
-	 * @return string: HTML to insert in the page.
+	 * @return string HTML to insert in the page.
 	 */
 	public static function parserTagDump( $data, $attribs, $parser, $frame ) {
-		$dump =  array(
+		$dump = [
 			'content' => $data,
 			'atributes' => (object)$attribs,
-		);
+		];
 
 		// Very important to escape user data with htmlspecialchars() to prevent
 		// an XSS security vulnerability.
@@ -129,7 +129,7 @@ class SpellingDictionaryHooks {
 	 * @param Parser $parser
 	 * @param string $value
 	 *
-	 * @return string: HTML to insert in the page.
+	 * @return string HTML to insert in the page.
 	 */
 	public static function parserFunctionEcho( $parser, $value ) {
 		return '<pre>Echo Function: ' . htmlspecialchars( $value ) . '</pre>';
@@ -141,14 +141,14 @@ class SpellingDictionaryHooks {
 	 * @param Parser $parser
 	 * @param string $arg
 	 *
-	 * @return string: HTML to insert in the page.
+	 * @return string HTML to insert in the page.
 	 */
 	public static function parserFunctionShowme( $parser, $value /* arg2, arg3, */ ) {
 		$args = array_slice( func_get_args(), 2 );
-		$showme = array(
+		$showme = [
 			'value' => $value,
 			'arguments' => $args,
-		);
+		];
 
 		return '<pre>Showme Function: '
 			. htmlspecialchars( FormatJson::encode( $showme, /*prettyPrint=*/true ) ) . '</pre>';

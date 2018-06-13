@@ -5,14 +5,14 @@
 class AdminRights {
 	public static function displayAllWords() {
 		global $wgSpellingDictionaryDatabase;
-		$dbr = wfGetDB( DB_SLAVE, array(), $wgSpellingDictionaryDatabase );
+		$dbr = wfGetDB( DB_REPLICA, [], $wgSpellingDictionaryDatabase );
 		$rows = $dbr->select(
 			'spell_dict_word_list',
 			'*',
 			1,
 			__METHOD__
 		);
-		$result = array();
+		$result = [];
 		$words = '<b>Spelling &nbsp;&nbsp;&nbsp;&nbsp;Language</b><br>';
 		foreach ( $rows as $row ) {
 			$words .= "<span class = \"spelling\">".$row->sd_word .
@@ -24,13 +24,13 @@ class AdminRights {
 
 	public static function displayByLanguage( $language ) {
 		global $wgSpellingDictionaryDatabase;
-		$dbr = wfGetDB( DB_SLAVE, array(), $wgSpellingDictionaryDatabase );
+		$dbr = wfGetDB( DB_REPLICA, [], $wgSpellingDictionaryDatabase );
 		$rows = $dbr->select(
 			'spell_dict_word_list',
 			'*',
-			array(
+			[
 				'sd_language' => $language,
-			),
+			],
 			__METHOD__
 		);
 		$words = "";
@@ -43,12 +43,12 @@ class AdminRights {
 
 	public static function deleteSpelling( $spelling ) {
 		global $wgSpellingDictionaryDatabase;
-		$dbr = wfGetDB( DB_SLAVE, array(), $wgSpellingDictionaryDatabase );
+		$dbr = wfGetDB( DB_REPLICA, [], $wgSpellingDictionaryDatabase );
 		$rows = $dbr->delete(
 			'spell_dict_word_list',
-			array(
+			[
 				'sd_word' => $spelling,
-			),
+			],
 			__METHOD__
 		);
 	}
@@ -56,7 +56,7 @@ class AdminRights {
 }
 
 /**
- * The structure of the page would be like a tree where the 
+ * The structure of the page would be like a tree where the
  * Tree contains sections.
  * Every section will have items (which will be possibly links to other pages)
  */
@@ -67,7 +67,7 @@ class SDTree {
 	public $sections;
 
 	function __construct() {
-		$this->sections = array();
+		$this->sections = [];
 	}
 
 	function addSection( $section ) {
@@ -94,7 +94,7 @@ class SDSection {
 
 	function __construct( $header ) {
 		$this->header = $header;
-		$this->items = array();
+		$this->items = [];
 	}
 
 	function addItem( $item ) {
@@ -106,8 +106,9 @@ class SDSection {
 		$text = '	<h2 class="mw-specialpagesgroup">' . $this->header . "</h2>\n";
 		$text .= "	<p>\n";
 		foreach ( $this->items as $i => $item ) {
-			if ( $i > 0 )
+			if ( $i > 0 ) {
 				$text .= " ·\n";
+			}
 			$text .= '		' . $item->link;
 		}
 		return $text . "\n	</p>\n";
@@ -121,7 +122,7 @@ class SDSection {
 class SDItem {
 	public $link;
 
-	static function showPage( $page_title, $desc = null, $query = array() ) {
+	static function showPage( $page_title, $desc = null, $query = [] ) {
 		$item = new SDItem();
 		$item->link = Linker::link( $page_title, $desc );
 		return $item;

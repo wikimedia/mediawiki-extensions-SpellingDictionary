@@ -20,26 +20,26 @@ class SpecialViewByLanguage extends SpecialPage {
 		// Display languages in their native name
 		$languages = Language::fetchLanguageNames( null, 'mwfile' );
 		ksort( $languages );
-		$options = array();
+		$options = [];
 		foreach ( $languages as $code => $name ) {
 			$options["$code - $name"] = $code;
 		}
 
-		$formDescriptor = array(
-			'language' => array(
+		$formDescriptor = [
+			'language' => [
 				'type' => 'select',
 				'label-message' => 'sd-admin-select-language',
 				'required' => true,
 				'options' => $options,
 				'section' => 'section-chooselanguage',
-			)
-		);
+			]
+		];
 		$form = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
 		$form->setId( 'languageSelectionForm' );
 		$form->setMessagePrefix( 'view-by-lang' );
 		$form->setSubmitText( wfMessage( 'sd-admin-view-selected-language' )->text() );
 		// Callback function
-		$form->setSubmitCallback( array( $this, 'showSpellings' ) );
+		$form->setSubmitCallback( [ $this, 'showSpellings' ] );
 		$form->show();
 	}
 
