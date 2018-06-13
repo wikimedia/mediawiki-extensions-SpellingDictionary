@@ -21,13 +21,9 @@
 $wgExtensionCredits['other'][] = [
 	'path' => __FILE__,
 	'name' => 'SpellingDictionary',
-	'author' => [
-		'Ankita Shukla'
-	],
+	'author' => 'Ankita Shukla',
 	'version'  => '0.1.0',
-	// Delete this url and uncomment the next one when the extension goes live on the core page.
-	'url' => 'https://www.mediawiki.org/wiki/User:Ankitashukla/Extension:SpellingDictionary',
-	// 'url' => 'https://www.mediawiki.org/wiki/Extension:SpellingDictionary',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:SpellingDictionary',
 	'descriptionmsg' => 'desc',
 ];
 
