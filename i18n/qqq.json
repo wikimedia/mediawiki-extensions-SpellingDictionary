@@ -1,6 +1,8 @@
 {
 	"@metadata": {
-		"authors": ["Ankita Shukla"]
+		"authors": [
+			"Ankita Shukla"
+		]
 	},
 	"spellingdictionary": "Used as name for special page",
 	"spellingdictionaryadmin": "Used as name for special page",
@@ -26,5 +28,6 @@
 	"sd-admin-select-language": "Used as label on Special:ViewByLanguage\nUsed with javascript",
 	"sd-admin-view-selected-language": "Used as submit text on Special:ViewByLanguage\nUsed with javascript",
 	"view-by-lang-section-chooselanguage": "Title for the section for choosing the language\nUsed with javascript",
-	"add-word-section-addword": "Title for the section for adding a new word"
+	"add-word-section-addword": "Title for the section for adding a new word",
+	"right-spelladmin": "{{doc-right|spelladmin}}"
 }
