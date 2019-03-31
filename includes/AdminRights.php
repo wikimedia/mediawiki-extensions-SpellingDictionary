@@ -131,7 +131,7 @@ class SDItem {
 	static function customSpecialPage( $page_title ) {
 		$item = new SDItem();
 		$page = SpecialPageFactory::getPage( $page_title );
-		$item->link = Linker::link( $page->getTitle(), $page->getDescription() );
+		$item->link = Linker::link( $page->getPageTitle(), $page->getDescription() );
 		return $item;
 	}
 
