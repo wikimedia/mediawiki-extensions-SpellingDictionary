@@ -12,7 +12,7 @@ $resourcePaths = [
 ];
 
 // Register modules
-// See also http://www.mediawiki.org/wiki/Manual:$wgResourceModules
+// See also https://www.mediawiki.org/wiki/Manual:$wgResourceModules
 // ResourceLoader modules are the de facto standard way to easily
 // load JavaScript and CSS files to the client.
 $wgResourceModules['SpellingDictionary'] = [

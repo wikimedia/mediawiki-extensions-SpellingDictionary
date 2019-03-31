@@ -53,7 +53,7 @@ $GLOBALS['wgExtensionMessagesFiles']['SpellingDictionaryMagic'] =
 	$dir . '/SpellingDictionary.i18n.magic.php';
 
 // Register hooks
-// See also http://www.mediawiki.org/wiki/Manual:Hooks
+// See also https://www.mediawiki.org/wiki/Manual:Hooks
 $GLOBALS['wgHooks']['BeforePageDisplay'][] = 'SpellingDictionaryHooks::onBeforePageDisplay';
 $GLOBALS['wgHooks']['ResourceLoaderGetConfigVars'][] =
 	'SpellingDictionaryHooks::onResourceLoaderGetConfigVars';
@@ -66,7 +66,7 @@ $GLOBALS['wgHooks']['LoadExtensionSchemaUpdates'][] =
 	'SpellingDictionaryHooks::onLoadExtensionSchemaUpdates';
 
 // Register special pages
-// See also http://www.mediawiki.org/wiki/Manual:Special_pages
+// See also https://www.mediawiki.org/wiki/Manual:Special_pages
 $GLOBALS['wgSpecialPages']['SpellingDictionary'] = 'SpecialSpellingDictionary';
 $GLOBALS['wgSpecialPages']['SpellingDictionaryAdmin'] = 'SpecialSpellingDictionaryAdmin';
 $GLOBALS['wgSpecialPages']['ViewAll'] = 'SpecialViewAll';

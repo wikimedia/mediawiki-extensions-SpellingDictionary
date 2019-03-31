@@ -40,7 +40,7 @@ class SpellingDictionaryHooks {
 
 	/**
 	 * Register parser hooks
-	 * See also http://www.mediawiki.org/wiki/Manual:Parser_functions
+	 * See also https://www.mediawiki.org/wiki/Manual:Parser_functions
 	 */
 	public static function onParserFirstCallInit( &$parser ) {
 		// Add the following to a wiki page to see how it works:
