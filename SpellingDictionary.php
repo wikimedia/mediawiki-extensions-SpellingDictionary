@@ -12,62 +12,17 @@
  * @license GPL-2.0-or-later
  */
 
-/**
- * MediaWiki has several global variables which can be reused or even altered
- * by your extension. The very first one is the $wgExtensionCredits which will
- * expose to MediaWiki metadata about your extension. For additional
- * documentation, see its documentation block in includes/DefaultSettings.php
- */
-$wgExtensionCredits['other'][] = [
-	'path' => __FILE__,
-	'name' => 'SpellingDictionary',
-	'author' => 'Ankita Shukla',
-	'version'  => '0.1.0',
-	'url' => 'https://www.mediawiki.org/wiki/Extension:SpellingDictionary',
-	'descriptionmsg' => 'desc',
-];
-
-// Setup
-
-$GLOBALS['wgGroupPermissions']['sysop']['spelladmin'] = true;
-$GLOBALS['wgAvailableRights'][] = 'spelladmin';
-
-$dir = __DIR__;
-
-require_once "$dir/Resources.php";
-require_once "$dir/Autoload.php";
-
-// Globals for this extension
-$GLOBALS['wgSpellingDictionaryDatabase'] = false;
-
-// Register files
-// MediaWiki need to know which PHP files contains your class. It has a
-// registering mecanism to append to the internal autoloader. Simply use
-// $wgAutoLoadClasses as below:
-
-
-$GLOBALS['wgMessagesDirs']['SpellingDictionary'] = __DIR__ . '/i18n';
-$GLOBALS['wgExtensionMessagesFiles']['SpellingDictionaryAlias'] =
-	$dir . '/SpellingDictionary.i18n.alias.php';
-$GLOBALS['wgExtensionMessagesFiles']['SpellingDictionaryMagic'] =
-	$dir . '/SpellingDictionary.i18n.magic.php';
-
-// Register hooks
-// See also https://www.mediawiki.org/wiki/Manual:Hooks
-$GLOBALS['wgHooks']['BeforePageDisplay'][] = 'SpellingDictionaryHooks::onBeforePageDisplay';
-$GLOBALS['wgHooks']['ResourceLoaderGetConfigVars'][] =
-	'SpellingDictionaryHooks::onResourceLoaderGetConfigVars';
-$GLOBALS['wgHooks']['ParserFirstCallInit'][] = 'SpellingDictionaryHooks::onParserFirstCallInit';
-$GLOBALS['wgHooks']['MagicWordwgVariableIDs'][] = 'SpellingDictionaryHooks::onRegisterMagicWords';
-$GLOBALS['wgHooks']['ParserGetVariableValueSwitch'][] =
-	'SpellingDictionaryHooks::onParserGetVariableValueSwitch';
-# Schema updates for update.php
-$GLOBALS['wgHooks']['LoadExtensionSchemaUpdates'][] =
-	'SpellingDictionaryHooks::onLoadExtensionSchemaUpdates';
-
-// Register special pages
-// See also https://www.mediawiki.org/wiki/Manual:Special_pages
-$GLOBALS['wgSpecialPages']['SpellingDictionary'] = 'SpecialSpellingDictionary';
-$GLOBALS['wgSpecialPages']['SpellingDictionaryAdmin'] = 'SpecialSpellingDictionaryAdmin';
-$GLOBALS['wgSpecialPages']['ViewAll'] = 'SpecialViewAll';
-$GLOBALS['wgSpecialPages']['ViewByLanguage'] = 'SpecialViewByLanguage';
+if ( function_exists( 'wfLoadExtension' ) ) {
+	wfLoadExtension( 'SpellingDictionary' );
+	// Keep i18n globals so mergeMessageFileList.php doesn't break
+	$wgMessagesDirs['SpellingDictionary'] = __DIR__ . '/i18n';
+	$wgExtensionMessagesFiles['SpellingDictionaryAlias'] = __DIR__ . '/SpellingDictionary.alias.php';
+	wfWarn(
+		'Deprecated PHP entry point used for the SpellingDictionary extension. ' .
+		'Please use wfLoadExtension instead, ' .
+		'see https://www.mediawiki.org/wiki/Extension_registration for more details.'
+	);
+	return;
+} else {
+	die( 'This version of the SpellingDictionary extension requires MediaWiki 1.29+' );
+}

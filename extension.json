@@ -1,0 +1,131 @@
+{
+	"name": "SpellingDictionary",
+	"version": "0.1.0",
+	"author": "Ankita Shukla",
+	"url": "https://www.mediawiki.org/wiki/Extension:SpellingDictionary",
+	"descriptionmsg": "desc",
+	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.29.0"
+	},
+	"AvailableRights": [
+		"spelladmin"
+	],
+	"GroupPermissions": {
+		"sysop": {
+			"spelladmin": true
+		}
+	},
+	"SpecialPages": {
+		"SpellingDictionary": "SpecialSpellingDictionary",
+		"SpellingDictionaryAdmin": "SpecialSpellingDictionaryAdmin",
+		"ViewAll": "SpecialViewAll",
+		"ViewByLanguage": "SpecialViewByLanguage"
+	},
+	"MessagesDirs": {
+		"SpellingDictionary": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"SpellingDictionaryAlias": "SpellingDictionary.i18n.alias.php",
+		"SpellingDictionaryMagic": "SpellingDictionary.i18n.magic.php"
+	},
+	"AutoloadClasses": {
+		"Words": "includes/Words.php",
+		"AdminRights": "includes/AdminRights.php",
+		"SpellingDictionaryHooks": "SpellingDictionary.hooks.php",
+		"SpecialSpellingDictionary": "specials/SpecialSpellingDictionary.php",
+		"SpecialSpellingDictionaryAdmin": "specials/SpecialSpellingDictionaryAdmin.php",
+		"SpecialViewAll": "specials/SpecialViewAll.php",
+		"SpecialViewByLanguage": "specials/SpecialViewByLanguage.php",
+		"SDTree": "includes/AdminRights.php",
+		"SDSection": "includes/AdminRights.php",
+		"SDItem": "includes/AdminRights.php"
+	},
+	"ResourceModules": {
+		"SpellingDictionary": {
+			"styles": [
+				"modules/SpellingDictionary.css"
+			],
+			"scripts": [
+				"modules/SpellingDictionary.js"
+			],
+			"messages": [
+				"title-special"
+			],
+			"dependencies": [
+				"mediawiki.util",
+				"mediawiki.user",
+				"mediawiki.Title",
+				"oojs-ui"
+			]
+		},
+		"ext.SpellingDictionary.styles": {
+			"styles": "modules/ext.SpellingDictionary.styles.css"
+		},
+		"ext.SpellingDictionary.viewByLanguage": {
+			"scripts": "modules/ext.SpellingDictionary.viewByLanguage.js",
+			"messages": [
+				"sd-admin-select-language",
+				"view-by-lang-section-chooselanguage",
+				"sd-admin-view-selected-language"
+			],
+			"dependencies": [
+				"jquery.uls",
+				"oojs-ui",
+				"jquery.i18n",
+				"mediawiki.jqueryMsg",
+				"ext.uls.messages",
+				"ext.SpellingDictionary.styles"
+			]
+		},
+		"ext.SpellingDictionary.submitWord": {
+			"scripts": "modules/ext.SpellingDictionary.submitWord.js",
+			"messages": [
+				"add-word-form-submit",
+				"add-word-section-addword",
+				"spell-dict-word",
+				"spell-dict-language"
+			],
+			"dependencies": [
+				"jquery.uls",
+				"oojs-ui",
+				"jquery.i18n",
+				"mediawiki.jqueryMsg",
+				"ext.uls.messages",
+				"ext.SpellingDictionary.styles"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "Spellingictionary/SpellingDictionary"
+	},
+	"Hooks": {
+		"BeforePageDisplay": [
+			"SpellingDictionaryHooks::onBeforePageDisplay"
+		],
+		"ResourceLoaderGetConfigVars": [
+			"SpellingDictionaryHooks::onResourceLoaderGetConfigVars"
+		],
+		"ParserFirstCallInit": [
+			"SpellingDictionaryHooks::onParserFirstCallInit"
+		],
+		"MagicWordwgVariableIDs": [
+			"SpellingDictionaryHooks::onRegisterMagicWords"
+		],
+		"ParserGetVariableValueSwitch": [
+			"SpellingDictionaryHooks::onParserGetVariableValueSwitch"
+		],
+		"LoadExtensionSchemaUpdates": [
+			"SpellingDictionaryHooks::onLoadExtensionSchemaUpdates"
+		]
+	},
+	"config": {
+		"wgSpellingDictionaryDatabase": {
+			"value": false
+		}
+	},
+	"manifest_version": 2
+}
