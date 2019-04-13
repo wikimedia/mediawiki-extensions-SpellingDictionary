@@ -29,5 +29,6 @@
 	"sd-admin-view-selected-language": "Used as submit text on Special:ViewByLanguage\nUsed with javascript",
 	"view-by-lang-section-chooselanguage": "Title for the section for choosing the language\nUsed with javascript",
 	"add-word-section-addword": "Title for the section for adding a new word",
+	"action-spelladmin": "{{doc-action|spelladmin}}",
 	"right-spelladmin": "{{doc-right|spelladmin}}"
 }
