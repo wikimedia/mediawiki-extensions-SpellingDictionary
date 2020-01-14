@@ -34,14 +34,14 @@
 	"AutoloadClasses": {
 		"Words": "includes/Words.php",
 		"AdminRights": "includes/AdminRights.php",
-		"SpellingDictionaryHooks": "SpellingDictionary.hooks.php",
+		"SpellingDictionaryHooks": "includes/SpellingDictionaryHooks.php",
 		"SpecialSpellingDictionary": "specials/SpecialSpellingDictionary.php",
 		"SpecialSpellingDictionaryAdmin": "specials/SpecialSpellingDictionaryAdmin.php",
 		"SpecialViewAll": "specials/SpecialViewAll.php",
 		"SpecialViewByLanguage": "specials/SpecialViewByLanguage.php",
-		"SDTree": "includes/AdminRights.php",
-		"SDSection": "includes/AdminRights.php",
-		"SDItem": "includes/AdminRights.php"
+		"SDTree": "includes/SDTree.php",
+		"SDSection": "includes/SDSection.php",
+		"SDItem": "includes/SDItem.php"
 	},
 	"ResourceModules": {
 		"SpellingDictionary": {
