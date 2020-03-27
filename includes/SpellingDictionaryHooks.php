@@ -67,7 +67,7 @@ class SpellingDictionaryHooks {
 		return true;
 	}
 
-	public static function onParserGetVariableValueSwitch( &$parser, &$cache, &$magicWordId, &$ret ) {
+	public static function onParserGetVariableValueSwitch( $parser, &$cache, $magicWordId, &$ret ) {
 		if ( $magicWordId === 'myword' ) {
 			// Return value and cache should match. Cache is used to save
 			// additional call when it is used multiple times on a page.
