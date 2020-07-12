@@ -9,6 +9,9 @@
 class SpellingDictionaryHooks {
 	/**
 	 * Add welcome module to the load queue of all pages
+	 * @param OutputPage &$out
+	 * @param Skin &$skin
+	 * @return true
 	 */
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
 		global $wgSpellingDictionaryEnableWelcome;
@@ -24,6 +27,8 @@ class SpellingDictionaryHooks {
 
 	/**
 	 * Expose configuration variables through mw.config in javascript.
+	 * @param array &$vars
+	 * @return true
 	 */
 	public static function onResourceLoaderGetConfigVars( &$vars ) {
 		global $wgSpellingDictionaryEnableWelcome, $wgSpellingDictionaryWelcomeColorDefault,
@@ -41,6 +46,8 @@ class SpellingDictionaryHooks {
 	/**
 	 * Register parser hooks
 	 * See also https://www.mediawiki.org/wiki/Manual:Parser_functions
+	 * @param Parser &$parser
+	 * @return true
 	 */
 	public static function onParserFirstCallInit( &$parser ) {
 		// Add the following to a wiki page to see how it works:
@@ -79,6 +86,8 @@ class SpellingDictionaryHooks {
 
 	/**
 	 * This registers our database schema update(s)
+	 * @param DatabaseUpdater $updater
+	 * @return true
 	 */
 	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
 		$updater->addExtensionTable( 'spell_dict_word_list',
@@ -101,7 +110,7 @@ class SpellingDictionaryHooks {
 	 * Parser hook handler for <dump>
 	 *
 	 * @param string $data The content of the tag.
-	 * @param array $params The attributes of the tag.
+	 * @param array $attribs The attributes of the tag.
 	 * @param Parser $parser Parser instance available to render
 	 *  wikitext into html, or parser methods.
 	 * @param PPFrame $frame Can be used to see what template
@@ -139,7 +148,7 @@ class SpellingDictionaryHooks {
 	 * Parser function handler for {{#showme: .. | .. }}
 	 *
 	 * @param Parser $parser
-	 * @param string $arg
+	 * @param string $value
 	 *
 	 * @return string HTML to insert in the page.
 	 */
