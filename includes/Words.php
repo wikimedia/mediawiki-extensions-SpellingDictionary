@@ -18,7 +18,5 @@ class Words {
 		$dbw->insert( 'spell_dict_word_list',
 			$values,
 			__METHOD__ );
-			return true;
-		// return 'Try again';
 	}
 }

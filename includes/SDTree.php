@@ -16,7 +16,6 @@ class SDTree {
 
 	function addSection( $section ) {
 		$this->sections[] = $section;
-		return;
 	}
 
 	function toString() {

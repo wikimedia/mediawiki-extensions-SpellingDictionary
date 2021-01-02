@@ -14,7 +14,6 @@ class SDSection {
 
 	function addItem( $item ) {
 		$this->items[] = $item;
-		return;
 	}
 
 	function toString() {

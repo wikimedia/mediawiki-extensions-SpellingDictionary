@@ -9,26 +9,20 @@
 class SpellingDictionaryHooks {
 	/**
 	 * Add welcome module to the load queue of all pages
-	 * @param OutputPage &$out
-	 * @param Skin &$skin
-	 * @return true
+	 * @param OutputPage $out
+	 * @param Skin $skin
 	 */
-	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
+	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
 		global $wgSpellingDictionaryEnableWelcome;
 
 		if ( $wgSpellingDictionaryEnableWelcome ) {
 			$out->addModules( 'ext.SpellingDictionary.welcome.init' );
 		}
-
-		// Always return true, indicating that parser initialization should
-		// continue normally.
-		return true;
 	}
 
 	/**
 	 * Expose configuration variables through mw.config in javascript.
 	 * @param array &$vars
-	 * @return true
 	 */
 	public static function onResourceLoaderGetConfigVars( &$vars ) {
 		global $wgSpellingDictionaryEnableWelcome, $wgSpellingDictionaryWelcomeColorDefault,
@@ -39,17 +33,14 @@ class SpellingDictionaryHooks {
 				$wgSpellingDictionaryWelcomeColorDefault;
 			$vars['wgSpellingDictionaryWelcomeColorDays'] = $wgSpellingDictionaryWelcomeColorDays;
 		}
-
-		return true;
 	}
 
 	/**
 	 * Register parser hooks
 	 * See also https://www.mediawiki.org/wiki/Manual:Parser_functions
-	 * @param Parser &$parser
-	 * @return true
+	 * @param Parser $parser
 	 */
-	public static function onParserFirstCallInit( &$parser ) {
+	public static function onParserFirstCallInit( $parser ) {
 		// Add the following to a wiki page to see how it works:
 		// <dump>test</dump>
 		// <dump foo="bar" baz="quux">test content</dump>
@@ -62,16 +53,12 @@ class SpellingDictionaryHooks {
 		// Add the following to a wiki page to see how it works:
 		// {{#showme: hello | hi | there }}
 		$parser->setFunctionHook( 'showme', 'SpellingDictionaryHooks::parserFunctionShowme' );
-
-		return true;
 	}
 
 	public static function onRegisterMagicWords( &$magicWordsIds ) {
 		// Add the following to a wiki page to see how it works:
 		// {{MYWORD}}
 		$magicWordsIds[] = 'myword';
-
-		return true;
 	}
 
 	public static function onParserGetVariableValueSwitch( $parser, &$cache, $magicWordId, &$ret ) {
@@ -80,19 +67,15 @@ class SpellingDictionaryHooks {
 			// additional call when it is used multiple times on a page.
 			$ret = $cache['myword'] = self::parserGetWordMyword();
 		}
-
-		return true;
 	}
 
 	/**
 	 * This registers our database schema update(s)
 	 * @param DatabaseUpdater $updater
-	 * @return true
 	 */
 	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
 		$updater->addExtensionTable( 'spell_dict_word_list',
 		__DIR__ . '/../sql/spelling_dictionary.sql', true );
-		return true;
 	}
 
 	/**
