@@ -9,7 +9,7 @@ Spelling dictionary project aims at developing a collaborative dictionary for ch
 - Add the following code at the bottom of your LocalSettings.php
 
 ```php
-require_once "$IP/extensions/SpellingDictionary/SpellingDictionary.php";
+wfLoadExtension( 'SpellingDictionary' );
 ```
 - Run the update script:
 ```php maintenance/update.php```
