@@ -17,14 +17,9 @@ class SDItem {
 	static function customSpecialPage( $page_title ) {
 		$item = new SDItem();
 
-		if ( class_exists( 'MediaWiki\Special\SpecialPageFactory' ) ) {
-			// MW 1.32+
-			$page = MediaWikiServices::getInstance()
-				->getSpecialPageFactory()
-				->getPage( $page_title );
-		} else {
-			$page = SpecialPageFactory::getPage( $page_title );
-		}
+		$page = MediaWikiServices::getInstance()
+			->getSpecialPageFactory()
+			->getPage( $page_title );
 
 		$item->link = Linker::link( $page->getPageTitle(), $page->getDescription() );
 		return $item;
