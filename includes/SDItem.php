@@ -10,18 +10,25 @@ class SDItem {
 
 	static function showPage( $page_title, $desc = null, $query = [] ) {
 		$item = new SDItem();
-		$item->link = Linker::link( $page_title, $desc );
+		$item->link = MediaWikiServices::getInstance()
+			->getLinkRenderer()->makeLink( $page_title, $desc );
+
 		return $item;
 	}
 
 	static function customSpecialPage( $page_title ) {
 		$item = new SDItem();
+		$services = MediaWikiServices::getInstance();
 
-		$page = MediaWikiServices::getInstance()
+		$page = $services
 			->getSpecialPageFactory()
 			->getPage( $page_title );
 
-		$item->link = Linker::link( $page->getPageTitle(), $page->getDescription() );
+		$item->link = $services->getLinkRenderer()->makeLink(
+			$page->getPageTitle(),
+			$page->getDescription()
+		);
+
 		return $item;
 	}
 
