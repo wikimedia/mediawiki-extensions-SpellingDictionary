@@ -6,6 +6,8 @@
  * @ingroup Extensions
  */
 
+use MediaWiki\MediaWikiServices;
+
 class SpecialSpellingDictionary extends SpecialPage {
 
 	/**
@@ -35,7 +37,16 @@ class SpecialSpellingDictionary extends SpecialPage {
 
 		// Building a language selector
 		// Display languages in their native name
-		$languages = Language::fetchLanguageNames( null, 'mwfile' );
+		if ( method_exists( MediaWikiServices::class, 'getLanguageNameUtils' ) ) {
+			// MW 1.34+
+			$languages = MediaWikiServices::getInstance()->getLanguageNameUtils()
+				->getLanguageNames(
+					MediaWiki\Languages\LanguageNameUtils::AUTONYMS,
+					MediaWiki\Languages\LanguageNameUtils::SUPPORTED
+				);
+		} else {
+			$languages = Language::fetchLanguageNames( null, 'mwfile' );
+		}
 		ksort( $languages );
 		$options = [];
 		foreach ( $languages as $code => $name ) {
