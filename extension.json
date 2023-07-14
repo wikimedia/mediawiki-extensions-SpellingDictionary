@@ -17,10 +17,20 @@
 		}
 	},
 	"SpecialPages": {
-		"SpellingDictionary": "SpecialSpellingDictionary",
+		"SpellingDictionary": {
+			"class": "SpecialSpellingDictionary",
+			"services": [
+				"LanguageNameUtils"
+			]
+		},
 		"SpellingDictionaryAdmin": "SpecialSpellingDictionaryAdmin",
 		"ViewAll": "SpecialViewAll",
-		"ViewByLanguage": "SpecialViewByLanguage"
+		"ViewByLanguage": {
+			"class": "SpecialViewByLanguage",
+			"services": [
+				"LanguageNameUtils"
+			]
+		}
 	},
 	"MessagesDirs": {
 		"SpellingDictionary": [

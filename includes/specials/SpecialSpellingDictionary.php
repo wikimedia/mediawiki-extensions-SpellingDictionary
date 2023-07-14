@@ -7,18 +7,23 @@
  */
 
 use MediaWiki\Languages\LanguageNameUtils;
-use MediaWiki\MediaWikiServices;
 
 class SpecialSpellingDictionary extends SpecialPage {
+
+	/** @var LanguageNameUtils */
+	private $languageNameUtils;
 
 	/**
 	 * Initialize the special page.
 	 */
-	public function __construct() {
+	public function __construct(
+		LanguageNameUtils $languageNameUtils
+	) {
 		// A special page should at least have a name.
 		// We do this by calling the parent class (the SpecialPage class)
 		// constructor method with the name as first and only parameter.
 		parent::__construct( 'SpellingDictionary' );
+		$this->languageNameUtils = $languageNameUtils;
 	}
 
 	public function doesWrites() {
@@ -38,11 +43,10 @@ class SpecialSpellingDictionary extends SpecialPage {
 
 		// Building a language selector
 		// Display languages in their native name
-		$languages = MediaWikiServices::getInstance()->getLanguageNameUtils()
-			->getLanguageNames(
-				LanguageNameUtils::AUTONYMS,
-				LanguageNameUtils::SUPPORTED
-			);
+		$languages = $this->languageNameUtils->getLanguageNames(
+			LanguageNameUtils::AUTONYMS,
+			LanguageNameUtils::SUPPORTED
+		);
 		ksort( $languages );
 		$options = [];
 		foreach ( $languages as $code => $name ) {
