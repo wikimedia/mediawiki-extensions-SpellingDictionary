@@ -10,15 +10,15 @@ class SDTree {
 
 	public $sections;
 
-	function __construct() {
+	public function __construct() {
 		$this->sections = [];
 	}
 
-	function addSection( $section ) {
+	public function addSection( $section ) {
 		$this->sections[] = $section;
 	}
 
-	function toString() {
+	public function toString() {
 		$text = "";
 		foreach ( $this->sections as $section ) {
 			$text .= $section->toString();

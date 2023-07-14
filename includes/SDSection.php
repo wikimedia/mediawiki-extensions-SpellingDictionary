@@ -7,16 +7,16 @@ class SDSection {
 	public $header;
 	public $items;
 
-	function __construct( $header ) {
+	public function __construct( $header ) {
 		$this->header = $header;
 		$this->items = [];
 	}
 
-	function addItem( $item ) {
+	public function addItem( $item ) {
 		$this->items[] = $item;
 	}
 
-	function toString() {
+	public function toString() {
 		$text = '	<h2 class="mw-specialpagesgroup">' . $this->header . "</h2>\n";
 		$text .= "	<p>\n";
 		foreach ( $this->items as $i => $item ) {

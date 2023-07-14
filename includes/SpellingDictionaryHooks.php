@@ -9,6 +9,7 @@
 class SpellingDictionaryHooks {
 	/**
 	 * Add welcome module to the load queue of all pages
+	 *
 	 * @param OutputPage $out
 	 * @param Skin $skin
 	 */
@@ -22,6 +23,7 @@ class SpellingDictionaryHooks {
 
 	/**
 	 * Expose configuration variables through mw.config in javascript.
+	 *
 	 * @param array &$vars
 	 */
 	public static function onResourceLoaderGetConfigVars( &$vars ) {
@@ -38,6 +40,7 @@ class SpellingDictionaryHooks {
 	/**
 	 * Register parser hooks
 	 * See also https://www.mediawiki.org/wiki/Manual:Parser_functions
+	 *
 	 * @param Parser $parser
 	 */
 	public static function onParserFirstCallInit( $parser ) {
@@ -71,6 +74,7 @@ class SpellingDictionaryHooks {
 
 	/**
 	 * This registers our database schema update(s)
+	 *
 	 * @param DatabaseUpdater $updater
 	 */
 	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
@@ -98,7 +102,6 @@ class SpellingDictionaryHooks {
 	 *  wikitext into html, or parser methods.
 	 * @param PPFrame $frame Can be used to see what template
 	 *  arguments ({{{1}}}) this hook was used with.
-	 *
 	 * @return string HTML to insert in the page.
 	 */
 	public static function parserTagDump( $data, $attribs, $parser, $frame ) {
@@ -110,7 +113,7 @@ class SpellingDictionaryHooks {
 		// Very important to escape user data with htmlspecialchars() to prevent
 		// an XSS security vulnerability.
 		$html = '<pre>Dump Tag: '
-			. htmlspecialchars( FormatJson::encode( $dump, /*prettyPrint=*/true ) ) . '</pre>';
+			. htmlspecialchars( FormatJson::encode( $dump, true ) ) . '</pre>';
 
 		return $html;
 	}
@@ -120,7 +123,6 @@ class SpellingDictionaryHooks {
 	 *
 	 * @param Parser $parser
 	 * @param string $value
-	 *
 	 * @return string HTML to insert in the page.
 	 */
 	public static function parserFunctionEcho( $parser, $value ) {
@@ -132,10 +134,9 @@ class SpellingDictionaryHooks {
 	 *
 	 * @param Parser $parser
 	 * @param string $value
-	 *
 	 * @return string HTML to insert in the page.
 	 */
-	public static function parserFunctionShowme( $parser, $value /* arg2, arg3, */ ) {
+	public static function parserFunctionShowme( $parser, $value ) {
 		$args = array_slice( func_get_args(), 2 );
 		$showme = [
 			'value' => $value,
@@ -143,6 +144,6 @@ class SpellingDictionaryHooks {
 		];
 
 		return '<pre>Showme Function: '
-			. htmlspecialchars( FormatJson::encode( $showme, /*prettyPrint=*/true ) ) . '</pre>';
+			. htmlspecialchars( FormatJson::encode( $showme, true ) ) . '</pre>';
 	}
 }

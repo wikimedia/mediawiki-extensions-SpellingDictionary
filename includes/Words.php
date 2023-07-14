@@ -1,7 +1,7 @@
 <?php
 
 class Words {
-	static function addWord( $formData ) {
+	public static function addWord( $formData ) {
 		// $user = $this->getUser();
 		global $wgSpellingDictionaryDatabase;
 		$dbw = wfGetDB( DB_MASTER, [], $wgSpellingDictionaryDatabase );

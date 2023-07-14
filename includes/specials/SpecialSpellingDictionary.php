@@ -27,6 +27,7 @@ class SpecialSpellingDictionary extends SpecialPage {
 
 	/**
 	 * Shows the page to the user.
+	 *
 	 * @param string $sub The subpage string argument (if any).
 	 *  [[Special:SpellingDictionary/subpage]].
 	 */
@@ -75,7 +76,7 @@ class SpecialSpellingDictionary extends SpecialPage {
 		$form->show();
 	}
 
-	static function store( $formData ) {
+	public static function store( $formData ) {
 		Words::addWord( $formData );
 	}
 

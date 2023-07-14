@@ -8,7 +8,7 @@ use MediaWiki\MediaWikiServices;
 class SDItem {
 	public $link;
 
-	static function showPage( $page_title, $desc = null, $query = [] ) {
+	public static function showPage( $page_title, $desc = null, $query = [] ) {
 		$item = new SDItem();
 		$item->link = MediaWikiServices::getInstance()
 			->getLinkRenderer()->makeLink( $page_title, $desc );
@@ -16,7 +16,7 @@ class SDItem {
 		return $item;
 	}
 
-	static function customSpecialPage( $page_title ) {
+	public static function customSpecialPage( $page_title ) {
 		$item = new SDItem();
 		$services = MediaWikiServices::getInstance();
 
