@@ -1,12 +1,17 @@
 <?php
 
 use MediaWiki\Languages\LanguageNameUtils;
-use MediaWiki\MediaWikiServices;
 
 class SpecialViewByLanguage extends SpecialPage {
 
-	public function __construct() {
+	/** @var LanguageNameUtils */
+	private $languageNameUtils;
+
+	public function __construct(
+		LanguageNameUtils $languageNameUtils
+	) {
 		parent::__construct( 'ViewByLanguage', 'spelladmin' );
+		$this->languageNameUtils = $languageNameUtils;
 	}
 
 	public function execute( $sub ) {
@@ -21,11 +26,10 @@ class SpecialViewByLanguage extends SpecialPage {
 
 		// Building a language selector
 		// Display languages in their native name
-		$languages = MediaWikiServices::getInstance()->getLanguageNameUtils()
-			->getLanguageNames(
-				LanguageNameUtils::AUTONYMS,
-				LanguageNameUtils::SUPPORTED
-			);
+		$languages = $this->languageNameUtils->getLanguageNames(
+			LanguageNameUtils::AUTONYMS,
+			LanguageNameUtils::SUPPORTED
+		);
 		ksort( $languages );
 		$options = [];
 		foreach ( $languages as $code => $name ) {
