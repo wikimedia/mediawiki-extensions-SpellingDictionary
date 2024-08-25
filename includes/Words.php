@@ -4,7 +4,7 @@ class Words {
 	public static function addWord( $formData ) {
 		// $user = $this->getUser();
 		global $wgSpellingDictionaryDatabase;
-		$dbw = wfGetDB( DB_MASTER, [], $wgSpellingDictionaryDatabase );
+		$dbw = wfGetDB( DB_PRIMARY, [], $wgSpellingDictionaryDatabase );
 
 		$user = "ABC";
 
