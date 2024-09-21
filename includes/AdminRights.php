@@ -2,10 +2,13 @@
 
 // namespace SpellingDictionary;
 
+use MediaWiki\MediaWikiServices;
+
 class AdminRights {
 	public static function displayAllWords() {
 		global $wgSpellingDictionaryDatabase;
-		$dbr = wfGetDB( DB_REPLICA, [], $wgSpellingDictionaryDatabase );
+		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()
+			->getConnection( DB_REPLICA, [], $wgSpellingDictionaryDatabase );
 		$rows = $dbr->select(
 			'spell_dict_word_list',
 			'*',
@@ -24,7 +27,8 @@ class AdminRights {
 
 	public static function displayByLanguage( $language ) {
 		global $wgSpellingDictionaryDatabase;
-		$dbr = wfGetDB( DB_REPLICA, [], $wgSpellingDictionaryDatabase );
+		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()
+			->getConnection( DB_REPLICA, [], $wgSpellingDictionaryDatabase );
 		$rows = $dbr->select(
 			'spell_dict_word_list',
 			'*',
@@ -43,7 +47,8 @@ class AdminRights {
 
 	public static function deleteSpelling( $spelling ) {
 		global $wgSpellingDictionaryDatabase;
-		$dbr = wfGetDB( DB_REPLICA, [], $wgSpellingDictionaryDatabase );
+		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()
+			->getConnection( DB_REPLICA, [], $wgSpellingDictionaryDatabase );
 		$rows = $dbr->delete(
 			'spell_dict_word_list',
 			[

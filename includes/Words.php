@@ -1,10 +1,13 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 class Words {
 	public static function addWord( $formData ) {
 		// $user = $this->getUser();
 		global $wgSpellingDictionaryDatabase;
-		$dbw = wfGetDB( DB_PRIMARY, [], $wgSpellingDictionaryDatabase );
+		$dbw = MediaWikiServices::getInstance()->getDBLoadBalancer()
+			->getConnection( DB_PRIMARY, [], $wgSpellingDictionaryDatabase );
 
 		$user = "ABC";
 
