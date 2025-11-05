@@ -21,7 +21,7 @@ class SpecialViewByLanguage extends SpecialPage {
 		}
 		$out = $this->getOutput();
 		$out->addModules( 'ext.SpellingDictionary.viewByLanguage' );
-		$out->setPageTitle( $this->msg( 'title-view-by-language' ) );
+		$out->setPageTitle( $this->msg( 'title-view-by-language' )->escaped() );
 		$out->addWikiMsg( 'view-by-lang-intro' );
 
 		// Building a language selector

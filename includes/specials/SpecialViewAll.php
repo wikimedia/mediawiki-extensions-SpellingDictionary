@@ -12,7 +12,7 @@ class SpecialViewAll extends SpecialPage {
 			return;
 		}
 		$out = $this->getOutput();
-		$out->setPageTitle( $this->msg( 'title-view-all' ) );
+		$out->setPageTitle( $this->msg( 'title-view-all' )->escaped() );
 		$out->addWikiMsg( 'view-all-intro' );
 		$out->addHTML( AdminRights::displayAllWords() );
 	}

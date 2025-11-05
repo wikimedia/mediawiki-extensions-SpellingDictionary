@@ -65,7 +65,7 @@ class SpecialSpellingDictionaryAdmin extends SpecialPage {
 
 		$out = $this->getOutput();
 		$this->setHeaders();
-		$out->setPageTitle( $this->msg( 'title-special-admin' ) );
+		$out->setPageTitle( $this->msg( 'title-special-admin' )->escaped() );
 		$out->addWikiMsg( 'intro-paragraph-admin' );
 		$admin_tree = $this->initializeTree();
 		$out->addHTML( $admin_tree->toString() );
