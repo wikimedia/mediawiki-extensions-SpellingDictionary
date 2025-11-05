@@ -39,7 +39,7 @@ class SpecialSpellingDictionary extends SpecialPage {
 	public function execute( $sub ) {
 		$out = $this->getOutput();
 		$out->addModules( 'ext.SpellingDictionary.submitWord' );
-		$out->setPageTitle( $this->msg( 'title-special' ) );
+		$out->setPageTitle( $this->msg( 'title-special' )->escaped() );
 		$out->addWikiMsg( 'intro-paragraph' );
 
 		// Building a language selector
