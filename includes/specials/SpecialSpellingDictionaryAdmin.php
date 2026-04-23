@@ -12,7 +12,12 @@ class SpecialSpellingDictionaryAdmin extends SpecialPage {
 	 * Initialize the special page.
 	 */
 	public function __construct() {
-		parent::__construct( 'SpellingDictionaryAdmin', 'spelladmin' );
+		parent::__construct( 'SpellingDictionaryAdmin' );
+	}
+
+	/** @inheritDoc */
+	public function getRestriction(): string {
+		return 'spelladmin';
 	}
 
 	public function doesWrites() {

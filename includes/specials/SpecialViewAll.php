@@ -3,7 +3,12 @@
 class SpecialViewAll extends SpecialPage {
 
 	public function __construct() {
-		parent::__construct( 'ViewAll', 'spelladmin' );
+		parent::__construct( 'ViewAll' );
+	}
+
+	/** @inheritDoc */
+	public function getRestriction(): string {
+		return 'spelladmin';
 	}
 
 	public function execute( $sub ) {

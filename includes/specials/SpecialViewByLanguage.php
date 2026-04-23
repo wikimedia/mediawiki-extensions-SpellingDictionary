@@ -10,8 +10,13 @@ class SpecialViewByLanguage extends SpecialPage {
 	public function __construct(
 		LanguageNameUtils $languageNameUtils
 	) {
-		parent::__construct( 'ViewByLanguage', 'spelladmin' );
+		parent::__construct( 'ViewByLanguage' );
 		$this->languageNameUtils = $languageNameUtils;
+	}
+
+	/** @inheritDoc */
+	public function getRestriction(): string {
+		return 'spelladmin';
 	}
 
 	public function execute( $sub ) {
