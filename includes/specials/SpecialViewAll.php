@@ -14,11 +14,11 @@ class SpecialViewAll extends SpecialPage {
 	public function execute( $sub ) {
 		if ( !$this->userCanExecute( $this->getUser() ) ) {
 			$this->displayRestrictionError();
-			return;
 		}
 		$out = $this->getOutput();
 		$out->setPageTitle( $this->msg( 'title-view-all' )->escaped() );
 		$out->addWikiMsg( 'view-all-intro' );
+		// @phan-suppress-next-line SecurityCheck-XSS
 		$out->addHTML( AdminRights::displayAllWords() );
 	}
 

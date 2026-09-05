@@ -65,7 +65,6 @@ class SpecialSpellingDictionaryAdmin extends SpecialPage {
 	public function execute( $sub ) {
 		if ( !$this->userCanExecute( $this->getUser() ) ) {
 			$this->displayRestrictionError();
-			return;
 		}
 
 		$out = $this->getOutput();

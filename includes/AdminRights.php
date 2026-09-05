@@ -12,7 +12,7 @@ class AdminRights {
 		$rows = $dbr->select(
 			'spell_dict_word_list',
 			'*',
-			1,
+			'1',
 			__METHOD__
 		);
 		$result = [];

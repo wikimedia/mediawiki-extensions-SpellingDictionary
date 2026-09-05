@@ -22,7 +22,6 @@ class SpecialViewByLanguage extends SpecialPage {
 	public function execute( $sub ) {
 		if ( !$this->userCanExecute( $this->getUser() ) ) {
 			$this->displayRestrictionError();
-			return;
 		}
 		$out = $this->getOutput();
 		$out->addModules( 'ext.SpellingDictionary.viewByLanguage' );
@@ -62,6 +61,7 @@ class SpecialViewByLanguage extends SpecialPage {
 	public function showSpellings( $formData ) {
 		$language = $formData['language'];
 		$out = $this->getOutput();
+		// @phan-suppress-next-line SecurityCheck-XSS
 		$out->addHTML( AdminRights::displayByLanguage( $language ) );
 	}
 

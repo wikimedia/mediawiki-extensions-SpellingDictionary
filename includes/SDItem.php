@@ -26,7 +26,7 @@ class SDItem {
 
 		$item->link = $services->getLinkRenderer()->makeLink(
 			$page->getPageTitle(),
-			$page->getDescription()
+			$page->getDescription()->text()
 		);
 
 		return $item;
