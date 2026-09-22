@@ -6,6 +6,8 @@
  * @ingroup Extensions
  */
 
+use MediaWiki\SpecialPage\SpecialPage;
+
 class SpecialSpellingDictionaryAdmin extends SpecialPage {
 
 	/**

@@ -6,6 +6,13 @@
  * @ingroup Extensions
  */
 
+use MediaWiki\Installer\DatabaseUpdater;
+use MediaWiki\Json\FormatJson;
+use MediaWiki\Output\OutputPage;
+use MediaWiki\Parser\Parser;
+use MediaWiki\Parser\PPFrame;
+use MediaWiki\Skin\Skin;
+
 class SpellingDictionaryHooks {
 	/**
 	 * Add welcome module to the load queue of all pages
@@ -47,15 +54,15 @@ class SpellingDictionaryHooks {
 		// Add the following to a wiki page to see how it works:
 		// <dump>test</dump>
 		// <dump foo="bar" baz="quux">test content</dump>
-		$parser->setHook( 'dump', 'SpellingDictionaryHooks::parserTagDump' );
+		$parser->setHook( 'dump', self::parserTagDump( ... ) );
 
 		// Add the following to a wiki page to see how it works:
 		// {{#echo: hello }}
-		$parser->setFunctionHook( 'echo', 'SpellingDictionaryHooks::parserFunctionEcho' );
+		$parser->setFunctionHook( 'echo', self::parserFunctionEcho( ... ) );
 
 		// Add the following to a wiki page to see how it works:
 		// {{#showme: hello | hi | there }}
-		$parser->setFunctionHook( 'showme', 'SpellingDictionaryHooks::parserFunctionShowme' );
+		$parser->setFunctionHook( 'showme', self::parserFunctionShowme( ... ) );
 	}
 
 	public static function onRegisterMagicWords( &$magicWordsIds ) {

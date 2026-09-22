@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\SpecialPage\SpecialPage;
+
 class SpecialViewAll extends SpecialPage {
 
 	public function __construct() {

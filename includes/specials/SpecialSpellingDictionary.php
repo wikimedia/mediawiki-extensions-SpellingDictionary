@@ -6,7 +6,9 @@
  * @ingroup Extensions
  */
 
+use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Languages\LanguageNameUtils;
+use MediaWiki\SpecialPage\SpecialPage;
 
 class SpecialSpellingDictionary extends SpecialPage {
 

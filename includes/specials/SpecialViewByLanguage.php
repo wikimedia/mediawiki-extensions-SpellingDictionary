@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Languages\LanguageNameUtils;
+use MediaWiki\SpecialPage\SpecialPage;
 
 class SpecialViewByLanguage extends SpecialPage {
 
